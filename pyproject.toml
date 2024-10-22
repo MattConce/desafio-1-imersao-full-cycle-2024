@@ -1,0 +1,10 @@
+[project]
+name = "app-blog"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django-rest-framework>=0.1.0",
+    "django>=5.1.2",
+]

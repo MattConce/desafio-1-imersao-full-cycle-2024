@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        body {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #ffc713;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 90%;
+            margin: 0px 10px;
+            padding: 20px;
+        }
+
+        .post-list {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .post-list li {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex: 1 1 300px;
+            max-width: 500px;
+        }
+
+        .post-list li:hover {
+            background-color: #f1f1f1;
+        }
+
+        .post-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .post-info p {
+            margin: 0;
+        }
+
+
+        .tag-list {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+        .tags {
+            max-width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px 0;
+        }
+
+        .tag-display {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tag-display li {
+            background-color: #f9f9f9;
+            padding: 10px 20px;
+            flex-shrink: 0;
+            border-radius: 15px;
+            white-space: nowrap;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffc713;
+            color: #212429;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Blog</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Posts</h1>
+                <ul class="post-list">
+                    {% for post in posts %}
+                    <li>
+                        <div class="post-info">
+                            <p><strong>Título:</strong> {{ post.title }}</p>
+                            <p><strong>Criado em:</strong> {{ post.created_at }}</p>
+                        </div>
+                        <p>{{ post.content }}</p>
+                        <p><strong>Tags:</strong>
+                            {% for tag in post.tags.all %}
+                            <span class="tag-list">{{ tag }}</span>
+                            {% empty %}
+                            <span>Nenhuma tag</span>
+                            {% endfor %}
+                        </p>
+                    </li>
+                    {% empty %}
+                    <li>Nenhum post encontrado.</li>
+                    {% endfor %}
+                </ul>
+        </section>
+
+        <section class="tags">
+            <h2>Tags</h2>
+            <ul class="tag-display">
+                {% for tag in tags %}
+                <li>{{ tag.name }}</li>
+                {% empty %}
+                <li>Nenhuma tag encontrada.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Desafio 1 Imersão Full Cycle 2024</p>
+    </footer>
+</body>
+
+</html>
