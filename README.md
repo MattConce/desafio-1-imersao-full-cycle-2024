@@ -19,3 +19,10 @@ Crie uma página com o path /blog e liste todos os posts e tags da aplicação.
 Faça tudo com SQLite3 e acrescente no controle de versão com Git.
 Precisa já ter cadastrado um usuário no admin com as seguintes credenciais: admin para o username, admin para a senha.
 Envie a URL do seu repositório.
+
+# Admin
+
+```
+usuário: admin
+senha: admin
+```
